@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=RentIt Demo
-Comment=Launch the RentIt vehicle rental demo locally
-Exec=bash -c 'cd "REPLACE_WITH_FULL_PATH_TO_vehicle_rental" && bash run.sh; exec bash'
-Icon=applications-internet
-Terminal=true
-Categories=Development;
