@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Book {{ vehicle.name }} - RentIt{% endblock %}
+{% block content %}
+
+<a href="{{ url_for('vehicles') }}" class="btn btn-link ps-0 text-secondary">&larr; Back to vehicles</a>
+
+<div class="row mt-2">
+  <div class="col-md-6 mb-4">
+    <div class="card-vehicle">
+      <div class="vehicle-thumb" style="height:220px; font-size:4rem;">🚗</div>
+      <div class="card-body">
+        <h3 class="mb-1">{{ vehicle.name }}</h3>
+        <p class="text-secondary mb-2">{{ vehicle.brand }}</p>
+        <h4 class="mb-2">₹{{ vehicle.rent_per_day|int }} <span class="text-secondary fs-6 fw-normal">/day</span></h4>
+        <span class="badge-status badge-{{ vehicle.status }}">{{ vehicle.status }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-4">
+    <div class="auth-card ms-0">
+      <h5 class="mb-3">Choose your dates</h5>
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label">Start Date</label>
+          <input type="date" name="start_date" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">End Date</label>
+          <input type="date" name="end_date" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-brand w-100">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

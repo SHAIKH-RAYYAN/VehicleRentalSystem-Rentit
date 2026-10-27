@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - RentIt{% endblock %}
+{% block content %}
+
+<div class="row mb-4">
+  <div class="col-md-8">
+    <h2 class="mb-1">Welcome back, {{ current_user.name.split(' ')[0] }}</h2>
+    <p class="text-secondary">{{ current_user.email }}</p>
+  </div>
+  <div class="col-md-4 text-md-end">
+    <a href="{{ url_for('vehicles') }}" class="btn btn-brand">Book a Vehicle</a>
+  </div>
+</div>
+
+<h4 class="mb-3">My Bookings</h4>
+<div class="table-responsive">
+  <table class="table table-clean">
+    <thead>
+      <tr>
+        <th>Vehicle</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Total Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in bookings %}
+      <tr>
+        <td>{{ b.vehicle_name }}</td>
+        <td>{{ b.start_date }}</td>
+        <td>{{ b.end_date }}</td>
+        <td>₹{{ b.total_price|int }}</td>
+        <td><span class="badge-status badge-{{ b.status }}">{{ b.status }}</span></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-secondary py-4">You haven't booked anything yet. <a href="{{ url_for('vehicles') }}">Browse vehicles</a> to get started.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

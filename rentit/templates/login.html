@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login - RentIt{% endblock %}
+{% block content %}
+
+<div class="auth-card">
+  <h3 class="mb-4">Log in</h3>
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-brand w-100">Log in</button>
+  </form>
+  <p class="text-center text-secondary mt-3 mb-0">
+    No account? <a href="{{ url_for('register') }}">Sign up</a>
+  </p>
+  <hr>
+  <small class="text-secondary">Demo admin: admin@rental.com / admin123</small>
+</div>
+
+{% endblock %}
